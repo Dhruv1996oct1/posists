@@ -1,4 +1,5 @@
 var readLine = require('readline-sync');
+var sha1 = require('sha1');
 
 var list = [];
 
@@ -30,7 +31,7 @@ function inputForGenesisNode() {
     obj.ownerId = readLine.question("owenerId : ");
     obj.value = eval(readLine.question("value : "));
     obj.ownerName = readLine.question("owner Name :");
-    obj.data = obj.ownerId + obj.value + obj.ownerName;
+    obj.data = obj.ownerId + obj.value + obj.ownerName + sha1(obj.ownerId + obj.value + obj.ownerName);
     obj.nodeNumber = 1;
     obj.nodeId = generateId();
     obj.referenceNodeId = generateId();
@@ -107,7 +108,7 @@ function setChildObject() {
     obj.ownerId = readLine.question("owenerId : ");
     obj.value = readLine.question("value : ");
     obj.ownerName = readLine.question("owner Name :");
-    obj.data = obj.ownerId + obj.value + obj.ownerName;
+    obj.data = obj.ownerId + obj.value + obj.ownerName + sha1(obj.ownerId + obj.value + obj.ownerName);;
     obj.nodeNumber = 1;
     obj.nodeId = generateId();
     obj.referenceNodeId = generateId();
